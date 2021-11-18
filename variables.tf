@@ -4,24 +4,25 @@
 variable "region" {
   description = "The region to create the resources into"
   type        = string
-  default     = "us-east-1"
+  default     = "us-west-1"
 }
 
 variable "cluster_name" {
   description = "Variable to provide your desired name for the cluster. The script will create a random name if this is empty"
   type        = string
-  default     = ""
+  default     = "appianserverless-eks"
 }
 
 variable "profile" {
   description = "The AWS Profile used to provision the EKS Cluster"
   type        = string
-  default     = null
+  default     = "default"
 }
 
 variable "cluster_version" {
   description = "Kubernetes version to use for the EKS cluster."
   type        = string
+  default     = "1.21"
 }
 
 // ----------------------------------------------------------------------------
@@ -415,19 +416,19 @@ variable "jx_git_operator_values" {
 variable "jx_git_url" {
   description = "URL for the Jenkins X cluster git repository"
   type        = string
-  default     = ""
+  default     = "https://github.com/appian-serverless-eks/jx3-cluster-asm"
 }
 
 variable "jx_bot_username" {
   description = "Bot username used to interact with the Jenkins X cluster git repository"
   type        = string
-  default     = ""
+  default     = "serverless-bot-726"
 }
 
 variable "jx_bot_token" {
   description = "Bot token used to interact with the Jenkins X cluster git repository"
   type        = string
-  default     = ""
+  default     = "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"
 }
 
 variable "create_eks" {
@@ -457,13 +458,13 @@ variable "subnets" {
 variable "use_vault" {
   description = "Flag to control vault resource creation"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "use_asm" {
   description = "Flag to specify if AWS Secrets manager is being used"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "install_kuberhealthy" {
@@ -532,7 +533,7 @@ variable "create_ssm_role" {
 variable "create_asm_role" {
   description = "Flag to control AWS Secrets Manager iam roles creation"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "create_velero_role" {
